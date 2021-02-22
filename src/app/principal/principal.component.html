@@ -1,0 +1,69 @@
+
+<div class="container">
+    <div>
+        <ul class="nav nav-tabs">
+            <li class="nav-item">
+            <p class="nav-link active" aria-current="page" href="#">Home</p>
+            </li>
+        </ul>
+    </div>
+    <br>
+    <div class="card">
+        <div class="card-body">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>#ORDEN</th>
+                        <th>FECHA</th>
+                        <th>NOMBRES</th>
+                        <th>APELLIDOS</th>
+                        <th>DETALLES</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor=" let data of detalles ">
+                        <td>{{ data.numero}}</td>
+                        <td>{{ data.fecha}}</td>
+                        <td>{{ data.nombres}}</td>
+                        <td>{{ data.apellidos}}</td>
+                        <td>
+                            <i class="bi-search" style="font-size: 2rem; color: rgb(231, 13, 31);"
+                            data-bs-toggle="modal" data-bs-target="#staticBackdrop"
+                            (click)='verDetalles(data.numero)'></i>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="staticBackdropLabel">DETALLES DE LA ORDEN</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body"> 
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>codigo</th>
+                        <th>nombre</th>
+                        <th>precio</th>
+                    </tr>
+                </thead> 
+                <tbody>
+                    <tr *ngFor=" let data of dellatesOrden ">
+                        <td>{{ data.codigo}}</td>
+                        <td>{{ data.nombre}}</td>
+                        <td>{{ data.precio_unitario}}</td>
+                    </tr>
+                </tbody>                
+            </table>
+        </div>
+      </div>
+    </div>
+</div>

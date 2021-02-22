@@ -1,0 +1,60 @@
+
+<div class="container">
+    <div>
+        <ul class="nav nav-tabs">
+            <li class="nav-item">
+            <p class="nav-link active" aria-current="page" href="#">Ordenes</p>
+            </li>
+        </ul>
+    </div>
+    <br>
+    <div class="card">
+        <div class="card-header">Nueva Orden</div>
+        <div class="card-body">
+            <form class="row">
+                <div class="col-2">
+                  <label>Fecha:</label>
+                  <input type="text" readonly class="form-control" [(ngModel)]="fecha" name="fecha">
+                </div>
+                <div class="col-4">
+                  <label>Cliente:</label>
+                  <select class="form-select" name="clienteSeleccionado" [(ngModel)]="clienteSeleccionado">
+                    <option  *ngFor="let data of clientes" [ngValue]="data.id">{{data.nombre +' '+ data.apellido}}</option>
+                  </select>
+                </div>
+                <div class="col-5">
+                    <label>Articulo:</label>
+                    <select class="form-select" name="articuloSeleccionado" [(ngModel)]="articuloSeleccionado">
+                        <option  *ngFor="let data of articulos" [ngValue]="data.id">{{data.nombre}}</option>
+                    </select>
+                </div>
+                <div class="col-1">
+                    <label>Añadir</label>
+                    <i class="bi-chevron-double-down" style="font-size: 2rem; color: cornflowerblue;" (click)="obtenerArticuloSeleccionado()"></i>
+                </div>
+                <div class="card-body">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>CODIGO</th>
+                                <th>NOMBRE</th>
+                                <th>PRECIO UNITARIO</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                          <tr *ngFor=" let data of detalles ">
+                            <td>{{ data.codigo}}</td>
+                            <td>{{ data.nombre}}</td>
+                            <td>{{ data.precio_unitario}}</td>
+                          </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+            </form>
+            <br>
+            <button type="button" class="btn btn-outline-success" (click)="guardarOrden()">GUARDAR</button>
+        </div>
+    </div>
+
+</div>

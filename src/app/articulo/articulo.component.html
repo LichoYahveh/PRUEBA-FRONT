@@ -1,0 +1,104 @@
+
+<div class="container">
+    <div>
+        <ul class="nav nav-tabs">
+            <li class="nav-item">
+            <p class="nav-link active" aria-current="page" href="#">Articulo</p>
+            </li>
+        </ul>
+    </div>
+    <br>
+    <div class="card">
+        <div class="card-header">
+            <button type="button" class="btn btn-outline-success" data-bs-toggle="modal" data-bs-target="#staticBackdrop">AÑADIR</button>
+        </div>
+        <div class="card-body">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>CODIGO</th>
+                        <th>NOMBRE</th>
+                        <th>PRECIO UNITARIO</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor=" let data of articulos ">
+                    <td>{{ data.codigo}}</td>
+                    <td>{{ data.nombre}}</td>
+                    <td>{{ data.precio_unitario}}</td>
+                    <td>
+                        <i class="bi-pencil-square" style="font-size: 2rem; color: cornflowerblue;" data-bs-toggle="modal" data-bs-target="#staticBackdropUpdate" (click)='llenarModal(data)'></i>
+                        &nbsp;
+                        <i class="bi-eraser" style="font-size: 2rem; color: rgb(231, 13, 31);" (click)='delete(data.codigo)'></i>
+                    </td>
+                  </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="staticBackdropLabel">Nuevo Registro</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <form  method="post" autocomplete="off">
+                <div class="mb-3">
+                  <label class="form-label">Codigo</label>
+                  <input type="text" class="form-control" [(ngModel)]="articulo.codigo" name="codigo">
+                </div>
+                <div class="mb-3">
+                  <label class="form-label">Nombre</label>
+                  <input type="text" class="form-control" [(ngModel)]="articulo.nombre" name="nombre">
+                </div>
+                <div class="mb-3">
+                  <label class="form-label">Precio Unitario</label>
+                  <input type="number" class="form-control" [(ngModel)]="articulo.precio_unitario" name="precio_unitario">
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" (click)='clear()' id="cerrarModal1">Cancelar</button>
+                  <button type="button" class="btn btn-primary" (click)='create()'>Guardar</button>
+                </div>
+            </form>
+        </div>
+      </div>
+    </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="staticBackdropUpdate" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="staticBackdropLabel">Modificar Registro</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <form  method="post" autocomplete="off">
+                <div class="mb-3">
+                  <label class="form-label">Codigo</label>
+                  <input type="text" class="form-control" [(ngModel)]="articulo.codigo" name="codigo">
+                </div>
+                <div class="mb-3">
+                  <label class="form-label">Nombre</label>
+                  <input type="text" class="form-control" [(ngModel)]="articulo.nombre" name="nombre">
+                </div>
+                <div class="mb-3">
+                  <label class="form-label">Precio Unitario</label>
+                  <input type="number" class="form-control" [(ngModel)]="articulo.precio_unitario" name="precio_unitario">
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" (click)='clear()' id="cerrarModal2">Cancelar</button>
+                  <button type="button" class="btn btn-primary" (click)='update()'>Guardar</button>
+                </div>
+            </form>
+        </div>
+      </div>
+    </div>
+</div>

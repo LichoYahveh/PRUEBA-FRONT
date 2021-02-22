@@ -1,0 +1,29 @@
+
+<div class="container">
+    <div>
+        <ul class="nav nav-tabs">
+            <li class="nav-item">
+            <p class="nav-link active" aria-current="page" href="#">Clientes</p>
+            </li>
+        </ul>
+    </div>
+    <br>
+    <div class="card">
+        <div class="card-body">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>APELLIDOS</th>
+                        <th>NOMBRE</th>
+                    </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor=" let data of cliente ">
+                    <td>{{ data.apellido}}</td>
+                    <td>{{ data.nombre}}</td>
+                  </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
